@@ -35,12 +35,12 @@ export const searchPath = `${adminRoot}/#`;
 export const servicePath = 'https://api.coloredstrategies.com';
 
 export const currentUser = {
-  title: 'Username',
+  title: 'Admin',
   role: UserRole.Admin,
 };
 
 export const themeColorStorageKey = '__theme_selected_color';
-export const isMultiColorActive = true;
+export const isMultiColorActive = false;
 export const defaultColor = 'light.orangecarrot';
 export const isDarkSwitchActive = true;
 export const defaultDirection = 'ltr';

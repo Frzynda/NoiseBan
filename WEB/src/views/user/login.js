@@ -55,16 +55,8 @@ const Login = ({ history, loading, error, loginUserAction }) => {
       <Colxx xxs="12" md="10" className="mx-auto my-auto">
         <Card className="auth-card">
           <div className="position-relative image-side ">
-            <p className="text-white h2">MAGIC IS IN THE DETAILS</p>
-            <p className="white mb-0">
-              Please use your credentials to login.
-              <br />
-              If you are not a member, please{' '}
-              <NavLink to="/user/register" className="white">
-                register
-              </NavLink>
-              .
-            </p>
+            <p className="text-white h2">LOGIN</p>
+            <p className="white mb-0">Silahkan login menggunakan akun admin.</p>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">
@@ -108,10 +100,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <NavLink to="/user/forgot-password">
-                      <IntlMessages id="user.forgot-password-question" />
-                    </NavLink>
+                  <div className="d-flex justify-content-end align-items-center">
                     <Button
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${

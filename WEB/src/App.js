@@ -19,18 +19,10 @@ import {
 import { getDirection } from './helpers/Utils';
 import { ProtectedRoute } from './helpers/authHelper';
 
-const ViewApp = React.lazy(() =>
-  import(/* webpackChunkName: "views-app" */ './views/app')
-);
-const ViewUser = React.lazy(() =>
-  import(/* webpackChunkName: "views-user" */ './views/user')
-);
-const ViewError = React.lazy(() =>
-  import(/* webpackChunkName: "views-error" */ './views/error')
-);
-const ViewUnauthorized = React.lazy(() =>
-  import(/* webpackChunkName: "views-error" */ './views/unauthorized')
-);
+const ViewApp = React.lazy(() => import('./views/app'));
+const ViewUser = React.lazy(() => import('./views/user'));
+const ViewError = React.lazy(() => import('./views/error'));
+const ViewUnauthorized = React.lazy(() => import('./views/unauthorized'));
 
 class App extends React.Component {
   constructor(props) {
@@ -48,6 +40,7 @@ class App extends React.Component {
   render() {
     const { locale } = this.props;
     const currentAppLocale = AppLocale[locale];
+    document.body.classList.add('rounded');
 
     return (
       <div className="h-100">
