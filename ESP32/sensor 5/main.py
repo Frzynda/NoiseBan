@@ -30,5 +30,5 @@ def updateValue(key, value):
 
 connectWifi()
 while True:
-    updateValue('sensor_6', randint(10,100))
+    updateValue('sensor_5', randint(10,100))
     time.sleep_ms(100)
