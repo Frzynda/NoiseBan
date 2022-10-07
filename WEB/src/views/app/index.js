@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import AppLayout from 'layout/AppLayout';
 
 const Monitoring = React.lazy(() => import('./monitoring'));
+const Sensor = React.lazy(() => import('./sensor'));
 
 const App = ({ match }) => {
   return (
@@ -20,6 +21,10 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/monitoring`}
               render={(props) => <Monitoring {...props} />}
+            />
+            <Route
+              path={`${match.url}/sensor`}
+              render={(props) => <Sensor {...props} />}
             />
             <Redirect to="/error" />
           </Switch>

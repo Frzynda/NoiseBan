@@ -47,6 +47,8 @@ module.exports = {
   'menu.docs': 'Docs',
   'menu.blank-page': 'Blank Page',
   'menu.monitoring': 'Monitoring',
+  'menu.sensor': 'Sensor',
+  'menu.tambah-sensor': 'Tambah',
 
   /* 04.Error Page */
   'pages.error-title': 'Ooops... looks like an error occurred!',
