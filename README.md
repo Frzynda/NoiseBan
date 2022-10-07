@@ -1,3 +1,3 @@
-## NoiseBan
+# NoiseBan
 
-# https://noiseban.netlify.app/
+## https://noiseban.netlify.app/
