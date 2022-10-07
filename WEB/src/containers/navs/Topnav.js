@@ -170,9 +170,27 @@ const TopNav = ({
           <MobileMenuIcon />
         </NavLink>
       </div>
-      <NavLink className="navbar-logo" to={adminRoot}>
-        <span className="logo d-none d-xs-block" />
-        <span className="logo-mobile d-block d-xs-none" />
+      <NavLink to={adminRoot}>
+        <h2
+          className="text-primary mb-4 d-none d-md-flex my-auto"
+          style={{
+            fontFamily: 'MuseoModerno',
+            fontWeight: 'bold',
+            fontSize: '1.8rem',
+          }}
+        >
+          NoiseBan
+        </h2>
+        <h2
+          className="text-primary mb-4 d-flex d-md-none my-auto"
+          style={{
+            fontFamily: 'MuseoModerno',
+            fontWeight: 'bold',
+            fontSize: '0.8rem',
+          }}
+        >
+          NoiseBan
+        </h2>
       </NavLink>
 
       <div className="navbar-right">

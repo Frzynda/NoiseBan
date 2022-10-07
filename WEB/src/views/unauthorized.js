@@ -30,7 +30,16 @@ const Unauthorized = () => {
                 </div>
                 <div className="form-side">
                   <NavLink to="/" className="white">
-                    <span className="logo-single" />
+                    <h2
+                      className="text-primary mb-4"
+                      style={{
+                        fontFamily: 'MuseoModerno',
+                        fontWeight: 'bold',
+                        fontSize: '2rem',
+                      }}
+                    >
+                      NoiseBan
+                    </h2>
                   </NavLink>
                   <CardTitle className="mb-4">
                     <IntlMessages id="unauthorized.title" />
