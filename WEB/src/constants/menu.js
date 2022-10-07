@@ -19,6 +19,18 @@ const data = [
         label: 'menu.tambah-sensor',
         to: `${adminRoot}/sensor/tambah-sensor`,
       },
+      {
+        id: 'baca-sensor',
+        icon: 'iconsminds-add',
+        label: 'menu.baca-sensor',
+        to: `${adminRoot}/sensor/baca-sensor`,
+      },
+      {
+        id: 'hapus-sensor',
+        icon: 'iconsminds-add',
+        label: 'menu.hapus-sensor',
+        to: `${adminRoot}/sensor/hapus-sensor`,
+      },
     ],
   },
 ];
