@@ -48,7 +48,10 @@ module.exports = {
   'menu.blank-page': 'Blank Page',
   'menu.monitoring': 'Monitoring',
   'menu.sensor': 'Sensor',
-  'menu.tambah-sensor': 'Tambah',
+  'menu.tambah-sensor': 'Tambah sensor',
+  'menu.baca-sensor': 'Baca sensor',
+  'menu.perbarui-sensor': 'Perbarui sensor',
+  'menu.hapus-sensor': 'Hapus sensor',
 
   /* 04.Error Page */
   'pages.error-title': 'Ooops... looks like an error occurred!',
