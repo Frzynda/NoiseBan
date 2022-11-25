@@ -33,7 +33,7 @@ export const adminRoot = '/app';
 export const buyUrl = 'https://1.envato.market/k4z0';
 export const searchPath = `${adminRoot}/#`;
 export const api =
-  'https://noise-ban-default-rtdb.asia-southeast1.firebasedatabase.app/data.json';
+  'https://noise-ban-default-rtdb.asia-southeast1.firebasedatabase.app';
 
 export const currentUser = {
   title: 'Admin',

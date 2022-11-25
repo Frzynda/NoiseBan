@@ -2,7 +2,12 @@ import { chartTooltip } from './util';
 
 export const lineChartOptions = {
   legend: {
-    display: false,
+    position: 'bottom',
+    labels: {
+      padding: 30,
+      usePointStyle: true,
+      fontSize: 12,
+    },
   },
   responsive: true,
   maintainAspectRatio: false,
@@ -23,17 +28,15 @@ export const lineChartOptions = {
         },
         ticks: {
           beginAtZero: true,
-          stepSize: 5,
-          min: 50,
-          max: 70,
-          padding: 20,
+          stepSize: 10,
+          padding: 10,
         },
       },
     ],
     xAxes: [
       {
         gridLines: {
-          display: false,
+          display: true,
         },
       },
     ],
@@ -201,10 +204,7 @@ export const barChartOptions = {
         },
         ticks: {
           beginAtZero: true,
-          stepSize: 20,
-          min: 0,
-          max: 100,
-          padding: 20,
+          padding: 10,
         },
       },
     ],
