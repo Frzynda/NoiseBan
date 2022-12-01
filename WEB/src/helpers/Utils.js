@@ -20,8 +20,11 @@ export const mapOrder = (array, order, key) => {
   return array;
 };
 
-export const getDateWithFormat = () => {
-  const today = new Date();
+export const getDateWithFormat = (time) => {
+  let today = new Date();
+  if (time) {
+    today = new Date(time);
+  }
   let dd = today.getDate();
   let mm = today.getMonth() + 1; // January is 0!
 
@@ -32,7 +35,7 @@ export const getDateWithFormat = () => {
   if (mm < 10) {
     mm = `0${mm}`;
   }
-  return `${dd}.${mm}.${yyyy}`;
+  return `${dd}/${mm}/${yyyy}`;
 };
 
 export const getCurrentTime = () => {

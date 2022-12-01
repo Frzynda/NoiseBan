@@ -204,6 +204,49 @@ export const barChartOptions = {
         },
         ticks: {
           beginAtZero: true,
+          max: 100,
+          min: 0,
+          stepSize: 20,
+          padding: 10,
+        },
+      },
+    ],
+    xAxes: [
+      {
+        gridLines: {
+          display: false,
+        },
+      },
+    ],
+  },
+  tooltips: chartTooltip,
+};
+
+export const barChartOptions2 = {
+  legend: {
+    position: 'bottom',
+    labels: {
+      padding: 30,
+      usePointStyle: true,
+      fontSize: 12,
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    yAxes: [
+      {
+        gridLines: {
+          display: true,
+          lineWidth: 1,
+          color: 'rgba(0,0,0,0.1)',
+          drawBorder: false,
+        },
+        ticks: {
+          beginAtZero: true,
+          max: 1.5,
+          min: 0,
+          stepSize: 0.25,
           padding: 10,
         },
       },

@@ -25,20 +25,10 @@ import { NotificationManager } from 'components/common/react-notifications';
 
 const Sensor = ({ match }) => {
   const [loading, setLoading] = useState(false);
-  const [dataSensor, setDataSensor] = useState({
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-  });
-  const [jarak, setJarak] = useState({
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-  });
+  const [dataSensor, setDataSensor] = useState({});
+  const [jarak, setJarak] = useState({});
+  const [sensors, setSensors] = useState([]);
+  const [values, setValues] = useState([]);
   const [showModal, setShowModal] = useState({
     show: false,
     selected: '',
@@ -46,15 +36,27 @@ const Sensor = ({ match }) => {
 
   const fetchData = async () => {
     await axios.get(`${api}/data.json`).then((response) => {
-      setDataSensor(response.data);
+      const x = response.data ? [...Object.keys(response.data)] : [];
+      const y = [];
+      const data = { ...dataSensor };
+      x.forEach((i) => {
+        const newestValue = response.data[i][response.data[i].length - 1];
+        y.push(newestValue.value);
+        data[i] = newestValue;
+      });
+      setSensors(x);
+      setValues(y);
+      setDataSensor(data);
       setLoading(false);
     });
   };
 
   const addSensor = async () => {
     setLoading(true);
-    const prev = dataSensor ? [...Object.keys(dataSensor)] : [];
+    const prev = [...sensors];
     const keys = prev.map((i) => parseInt(i[i.length - 1]));
+    let now = new Date();
+    now.setHours(now.getHours() + 7);
 
     let newData = {};
     if (prev.includes(`sensor_${prev.length + 1}`)) {
@@ -65,9 +67,19 @@ const Sensor = ({ match }) => {
           }
         })
         .filter((x) => x !== undefined)[0];
-      newData[`sensor_${newKey}`] = 0;
+      newData[`sensor_${newKey}`] = [
+        {
+          timestamp: now,
+          value: 0,
+        },
+      ];
     } else {
-      newData[`sensor_${prev.length + 1}`] = 0;
+      newData[`sensor_${prev.length + 1}`] = [
+        {
+          timestamp: now,
+          value: 0,
+        },
+      ];
     }
     try {
       await axios.patch(`${api}/data.json`, newData).then((response) => {
@@ -82,7 +94,6 @@ const Sensor = ({ match }) => {
           );
         }
         fetchData();
-        setLoading(false);
       });
     } catch (e) {
       NotificationManager.error(e.message, 'Gagal', 2000, null, null, '');
@@ -102,7 +113,6 @@ const Sensor = ({ match }) => {
           ''
         );
         fetchData();
-        setLoading(false);
       });
     } catch (e) {
       NotificationManager.error(e.message, 'Gagal', 2000, null, null, '');
@@ -112,15 +122,15 @@ const Sensor = ({ match }) => {
   useEffect(() => {
     setLoading(true);
     fetchData();
-    setInterval(fetchData, 1500);
-    return () => clearInterval();
+    const id = setInterval(fetchData, 1500);
+    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
-    if (dataSensor) {
+    if (sensors.length > 0) {
       let temp = {};
-      [...Object.keys(dataSensor)].map((key, index) => {
-        const x = dataSensor[key] * -1 + (100 - dataSensor[key]);
+      sensors.map((key) => {
+        const x = dataSensor[key].value * -1 + (35 - dataSensor[key].value);
         if (x > 0.5) {
           temp[key] = (x / 30).toFixed(2);
         } else {
@@ -161,8 +171,8 @@ const Sensor = ({ match }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {dataSensor &&
-                      [...Object.keys(dataSensor)].map((val, index) => (
+                    {sensors.length > 0 &&
+                      sensors.map((val, index) => (
                         <tr
                           key={index}
                           style={{
@@ -171,9 +181,9 @@ const Sensor = ({ match }) => {
                         >
                           <td>{index + 1}</td>
                           <td>{val}</td>
-                          <td>{dataSensor[val]} dB</td>
+                          <td>{dataSensor[val].value} dB</td>
                           <td>
-                            {dataSensor[val] > 0
+                            {dataSensor[val].value > 0
                               ? jarak[val]
                               : `> ${jarak[val]}`}{' '}
                             m
